@@ -1,0 +1,5 @@
+docker run - tworzy kontener i uruchamia go
+docker start - uruchamia utworzony już kontener
+docker start -a - uruchamia utworzony już kontener i wyświetla jego komunikat w konsoli
+docker rm - usuwa podane przez nas w argumentach kontenery
+docker container prune - usuwa wszystkie zatrzymane kontenery
