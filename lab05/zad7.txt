@@ -1,0 +1,6 @@
+CREATE TABLE dividers (
+    nwd_id serial PRIMARY KEY,
+    a INT NOT NULL,
+    b INT NOT NULL,
+    nwd INT NOT NULL;
+)

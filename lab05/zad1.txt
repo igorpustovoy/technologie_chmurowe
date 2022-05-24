@@ -1,0 +1,5 @@
+Jest podłączony do sieci bridge.
+
+//
+docker run --name first nginx
+docker network inspect bridge

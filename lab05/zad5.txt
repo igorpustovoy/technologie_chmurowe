@@ -1,0 +1,11 @@
+docker run --name postgres_volume -p 5001:5432 -d -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=example_db -v "C:\Program Files\PostgreSQL\14\data\pg:/var/lib/postgresql/data" postgres
+
+docker exec -it my-postgres sh
+
+psql -U postgres
+CREATE DATABASE testDB;
+CREATE TABLE accounts (
+        user_id serial PRIMARY KEY,
+        username VARCHAR ( 50 ) UNIQUE NOT NULL);
+INSERT INTO accounts (username) VALUES ('user11');
+SELECT * FROM accounts;

@@ -1,0 +1,2 @@
+docker build -t my-busybox
+docker run my-busybox

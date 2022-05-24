@@ -1,0 +1,4 @@
+docker rm first
+docker rm second
+docker network rm firstNetwork
+docker network ls

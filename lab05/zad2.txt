@@ -1,0 +1,7 @@
+kontener "second" jest podłączony do sieci firstNetwork
+
+//
+docker network create firstNetwork
+docker run --name second --network=firstNetwork nginx
+docker network inspect firstNetwork
+

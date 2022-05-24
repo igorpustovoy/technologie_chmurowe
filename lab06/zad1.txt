@@ -1,0 +1,6 @@
+docker-compose up ||| uruchamia docker compose
+docker-compose up -d ||| uruchamia docker compose z opcją detached
+docker-compose stop ||| wylacza multi instance container
+docker-compose down --volumes ||| usuwa Containers for services defined in the Compose file
+                                  Networks defined in the networks section of the Compose file
+                                  The default network, if one is used + volumeny 

@@ -1,0 +1,5 @@
+first był podłączony do sieci bridge i firstNetwork
+
+//
+docker network connect firstNetwork first
+docker network disconnect bridge first

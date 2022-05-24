@@ -1,0 +1,6 @@
+docker run --name my_redis -p 8443:8443 -d redis
+
+docker network create postgresAndRedis
+docker network connect postgresAndRedis postgres_volume
+docker network connect postgresAndRedis my_redis
+docker network inspect postgresAndRedis

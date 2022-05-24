@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./mynginx
+    ports:
+      - '9090:80'
+    
+  backend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    environment:
+      - PGPORT=5000
+    volumes:
+      - /app/node_modules
+      - ./backend:/app 
+    depends_on:
+      - redis
+    
+
+  redis:
+    restart: always
+    image: 'redis:alpine'
+
+  frontend:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    depends_on:
+      - backend
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app 

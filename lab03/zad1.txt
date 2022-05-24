@@ -1,0 +1,2 @@
+docker run -p 4200:80 nginx
+// atrybut -p nadaje kontenerowi port według wzoru lokalny_port:port_kontenera
