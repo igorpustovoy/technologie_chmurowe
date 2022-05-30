@@ -1,0 +1,10 @@
+kubectl create -f my-nginx-pod.yml
+kubectl get pods
+kubectl describe pod my-nginx-pod /// informacje o podzie
+kubectl delete -f ./my-nginx-pod.yml
+kubectl delete pod lab1zad2
+kubectl get services
+kubectl delete all --all
+kubectl rollout history deployment my-react-deployment //// historia deploymentu
+kubectl apply -f my-react-deployment.yml
+kubectl rollout undo // cofa deployment

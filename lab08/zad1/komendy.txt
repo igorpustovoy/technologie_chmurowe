@@ -1,0 +1,3 @@
+kubectl create -f my-nginx-pod.yml /// tworzy poda
+
+curl localhost:80 /// odpytuje port 80 czyli nginxa

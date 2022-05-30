@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  backend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    environment:
+      - PGPORT=5432
+      - PORT=5000
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+    depends_on:
+      - postgres
+    volumes:
+      - /opt/app/node_modules
+      - ./backend:/opt/app 
+
+  postgres:
+    restart: always
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  frontend:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    depends_on:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING="true"
+    volumes:
+      - /opt/app/node_modules
+      - ./client:/opt/app 
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '9090:80'

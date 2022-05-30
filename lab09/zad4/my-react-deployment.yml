@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: my-react-deployment
+  labels:
+    name: my-react-deployment
+
+spec:
+  selector:
+    matchLabels:
+      name: my-react-pod
+
+  replicas: 2
+  template: 
+    metadata:
+      labels:
+        name: my-react-pod 
+        
+    spec:
+     containers:
+     - name: my-react
+       image: ipustovoy/technologie-chmurowe:frontend1
+
+---
+
+apiVersion: v1 
+kind: Service
+metadata:
+  name: my-react-service
+spec:
+  selector:
+    name: my-react-pod
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30080
+  type: NodePort

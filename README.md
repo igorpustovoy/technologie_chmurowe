@@ -20,3 +20,5 @@ docker network create - tworzy nową sieć
 /////
 docker-compose -f docker-compose-dev.yml build --no-cache
 docker compose -f docker-compose-dev.yml up
+/////
+docker push ipustovoy/technologie-chmurowe:tagname ///// "ipustovoy/technologie-chmurowe:tagname" to nazwa image'a

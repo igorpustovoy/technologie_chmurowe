@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: my-react-replicaset
+
+spec:
+  selector:
+    matchLabels:
+      name: my-react-pod
+
+  replicas: 1
+  template: 
+    metadata:
+      labels:
+        name: my-react-pod 
+        
+    spec:
+     containers:
+     - name: my-react
+       image: ipustovoy/technologie-chmurowe:react-pod
