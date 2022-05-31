@@ -19,7 +19,7 @@ spec:
     spec:
      containers:
      - name: my-react
-       image: ipustovoy/technologie-chmurowe:frontend1
+       image: ipustovoy/technologie-chmurowe:frontend2
 
 ---
 
