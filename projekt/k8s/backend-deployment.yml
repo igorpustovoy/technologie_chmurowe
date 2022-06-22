@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    name: backend-deployment
+
+spec:
+  selector:
+    matchLabels:
+      name: backend-pod
+
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: backend-pod
+
+    spec:
+      containers:
+      - name: backend
+        image: ipustovoy/technologie-chmurowe:backend
+        env:
+        - name: MONGO_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-configmap
+              key: MONGO_HOST
+        - name: MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-configmap
+              key: MONGO_PORT
+        - name: MONGO_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-configmap
+              key: MONGO_DATABASE
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: redis-configmap
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: redis-configmap
+              key: REDIS_PORT

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    name: frontend-deployment
+
+spec:
+  selector:
+    matchLabels:
+      name: frontend-pod
+
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: frontend-pod
+
+    spec:
+      containers:
+      - name: frontend
+        image: ipustovoy/technologie-chmurowe:frontend
+        env:
+        - name: WDS_SOCKET_PORT
+          value: "0"

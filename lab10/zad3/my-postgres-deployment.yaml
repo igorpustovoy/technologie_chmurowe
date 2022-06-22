@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: lab10zad3
+  labels:
+    name: lab10zad3
+
+spec:
+  template:
+    metadata:
+      name: my-postgres-pod
+      labels:
+        name: lab10zad3
+
+    spec: 
+      containers:
+        - name: my-postgres-container
+          image: postgres
+          volumeMounts:
+            - name: my-postgres-volume
+              mountPath: /var/lib/postgresql/data
+          env: 
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-postgres-secret
+                  key: PGPASSWORD
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: my-postgres-configmap
+                  key: PGUSER
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: my-postgres-configmap
+                  key: PGHOST
+            - name: POSTGRES_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: my-postgres-configmap
+                  key: PGPORT
+            - name: POSTGRES_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: my-postgres-configmap
+                  key: PGDATABASE
+      volumes:
+        - name: my-postgres-volume
+          hostPath:
+            path: '/run/desktop/mnt/host/c/Users/igorp/k8s'
+            type: DirectoryOrCreate
+  replicas: 2
+  selector: 
+    matchLabels:
+      name: lab10zad3
